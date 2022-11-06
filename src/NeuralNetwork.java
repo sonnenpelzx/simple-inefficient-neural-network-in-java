@@ -1,5 +1,5 @@
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.List;
 
 public class NeuralNetwork implements Serializable {
@@ -7,6 +7,19 @@ public class NeuralNetwork implements Serializable {
     Matrix[] layer_weights;
     Matrix[] layer_bias;
     double l_rate=0.01;
+
+    public static void safeNeuralNetwork(String location, NeuralNetwork net) throws IOException {
+        FileOutputStream fileOutputStream= new FileOutputStream(location);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(net);
+        objectOutputStream.flush();
+        objectOutputStream.close();
+    }
+    public static NeuralNetwork loadFromFileNeuralNetwork(String location) throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(location);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        return (NeuralNetwork) objectInputStream.readObject();
+    }
 
     public NeuralNetwork(int[] layer_size) {
         layer_weights = new Matrix[layer_size.length-1];
