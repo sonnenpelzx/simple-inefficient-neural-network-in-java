@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.List;
 
@@ -61,8 +60,9 @@ public class NeuralNetwork implements Serializable {
     {
         for(int i=0;i<epochs;i++)
         {
-            int sampleN =  (int)(Math.random() * x.length );
-            this.train(x[sampleN], y[sampleN]);
+            for(int j = 0; j<x.length;j++) {
+                this.train(x[j], y[j]);
+            }
         }
     }
 
