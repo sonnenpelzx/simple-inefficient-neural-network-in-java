@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NeuralNetwork {
+public class NeuralNetwork implements Serializable {
 
     Matrix[] layer_weights;
     Matrix[] layer_bias;

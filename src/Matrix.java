@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Matrix {
+public class Matrix implements Serializable {
     double[][]data;
     int rows, cols;
     public Matrix(int rows, int cols) {
